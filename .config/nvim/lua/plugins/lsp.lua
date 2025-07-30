@@ -1,9 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'ray-x/lsp_signature.nvim',
-    'nvim-lua/lsp-status.nvim',
-    'hrsh7th/cmp-nvim-lsp',
+    'saghen/blink.cmp',
   },
   ft = {
     "go",
@@ -16,36 +14,25 @@ return {
   },
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "lsp: hover"},
-    {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "lsp: rename"},
+    {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "lsp: rename"}, -- default: grn
     {"ge", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "lsp: show full error"},
     {"]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "lsp: next error"},
     {"[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "lsp: previous error"},
-    {"gr", "<cmd>FzfLua lsp_references<CR>", desc = "lsp: references"},
-    {"gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "lsp: implementation"},
+    {"gr", "<cmd>FzfLua lsp_references<CR>", desc = "lsp: references"}, -- default: grr
+    {"gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "lsp: implementation"}, -- gri
     {"gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "lsp: definition"},
-    {"ga", "<cmd>FzfLua lsp_code_actions<CR>", desc = "lsp: code action"},
-  },
+    {"ga", "<cmd>FzfLua lsp_code_actions<CR>", desc = "lsp: code action"}, -- default: gra
+  }, -- ctrl-S for signature help in insert and select mode
   config = function()
     local vim = vim
     local lspconfig = require('lspconfig')
-    local lsp_status = require('lsp-status')
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
-
-    require("lsp_signature").setup({
-      hint_enable = false,
-      floating_window = true,
-      handler_opts = {
-        border = "single",
-      },
-    })
-
-    lsp_status.register_progress()
+    -- Disable to avoid a large log file.
+    -- Set to "debug" when debugging.
+    vim.lsp.set_log_level("off")
 
     -- Simple servers without custom config
-    local servers = { "ruff", "ruff_lsp", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
+    local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
 
     -- Servers with custom config
     local custom_servers = {
@@ -76,11 +63,12 @@ return {
       },
     }
 
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+
     -- Setup simple servers
     for _, server in ipairs(servers) do
       lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = lsp_status.on_attach,
       })
     end
 
@@ -88,7 +76,6 @@ return {
     for server, config in pairs(custom_servers) do
       lspconfig[server].setup(vim.tbl_extend("force", {
         capabilities = capabilities,
-        on_attach = lsp_status.on_attach,
       }, config))
     end
   end

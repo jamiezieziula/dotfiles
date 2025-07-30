@@ -45,9 +45,8 @@ PS1="$DEFAULT_PS1"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # Golang
-export GOPATH=$HOME/go
-unset GOROOT
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
 
 
 # ===================

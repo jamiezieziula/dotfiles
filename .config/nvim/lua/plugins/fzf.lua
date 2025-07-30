@@ -8,26 +8,34 @@ return {
     { "<leader>gw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
     { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-    { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" },
+    { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" }, -- default: gO
     { "<leader>h", "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "diagnostics" },
   },
-  config = function ()
-    local actions = require "fzf-lua.actions"
+  config = function()
+    local actions = require("fzf-lua.actions")
     local sharedActions = {
-      ["default"]     = actions.file_edit_or_qf,
-      ["ctrl-s"]      = actions.file_split,
-      ["ctrl-v"]      = actions.file_vsplit,
-      ["ctrl-t"]      = actions.file_tabedit,
+      ["default"] = actions.file_edit_or_qf,
+      ["ctrl-s"] = actions.file_split,
+      ["ctrl-v"] = actions.file_vsplit,
+      ["ctrl-t"] = actions.file_tabedit,
     }
 
-    local rg_common_opts = '--color=always --no-ignore --hidden --smart-case --line-number --glob "!.git/*"'
-    local files_opts = rg_common_opts .. ' ' .. '--files --follow'
+    -- equal to ~/.config/ripgrep/.ignore
+    local ignored_files = {
+      "%.git/",
+      "node_modules/",
+      "%.venv/",
+      "%.terraform/",
+      "%.zsh_sessions/",
+      "%.zcompcache/",
+      "%.zcompdump",
+    }
 
-    require'fzf-lua'.setup {
+    require("fzf-lua").setup({
       fzf_colors = true, -- auto generate based on current nvim theme
       winopts = {
         preview = {
-          wrap = 'wrap', -- wrap|nowrap
+          wrap = "wrap", -- wrap|nowrap
         },
       },
       keymap = {
@@ -39,23 +47,32 @@ return {
       },
       previewers = {
         bat = {
-          theme = 'OneHalfDark', -- bat --list-themes
+          theme = "ansi", -- bat --list-themes
         },
       },
       files = {
-        rg_opts = files_opts,
+        git_icons = false, -- for performance
+        file_icons = false, -- for performance
+        follow = true,
+        file_ignore_patterns = ignored_files,
         actions = sharedActions,
+        line_query = true, -- go to line (myfile.txt:5)
+        no_ignore = true,
       },
       grep = {
-        prompt = 'rg❯ ',
-        rg_opts = rg_common_opts,
+        git_icons = false, -- for performance
+        file_icons = false, -- for performance
+        prompt = "rg: ",
         actions = sharedActions,
+        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH, -- reuse config options
+        no_ignore = true, -- define our own ignore pattern below
+        file_ignore_patterns = ignored_files,
       },
       lsp = {
-        jump_to_single_result = true,
+        jump1 = true, -- jump directly when only 1 result
         ignore_current_line = true,
-        includeDeclaration = false
-      }
-    }
-  end
+        includeDeclaration = false,
+      },
+    })
+  end,
 }

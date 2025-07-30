@@ -1,0 +1,44 @@
+# https://ghostty.org/docs/config/reference
+# https://ghostty.zerebos.com
+
+theme = NordFox
+
+# Font settings
+font-size = 12
+font-family = "JetBrainsMonoNL Nerd Font"
+adjust-cell-height = "20%"
+
+# Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+# Disabled to provide my own
+# macos-icon = ""
+
+# window settings
+macos-titlebar-style = "hidden"
+maximize = true
+window-decoration = "none"
+window-padding-x = 10
+window-padding-y = 10
+
+
+# Keybindings
+# https://www3.rocketsoftware.com/bluezone/help/v42/en/bzadmin/APPENDIX_C/ASCII_Character_Set.htm
+
+# Switch to tmux pane
+keybind = cmd+1=text:\x02\x31
+keybind = cmd+2=text:\x02\x32
+keybind = cmd+3=text:\x02\x33
+keybind = cmd+4=text:\x02\x34
+keybind = cmd+5=text:\x02\x35
+
+# For some reason this writes a `#`.
+keybind = cmd+shift+3=ignore
+
+# Next/Previous pane
+keybind = cmd+shift+left_bracket=text:\x02\x70
+keybind = cmd+shift+right_bracket=text:\x02\x6E
+
+# Clear screen
+keybind = cmd+k=text:\x0c
+
+# Claude Code: shift enter for newlines
+keybind = shift+enter=text:\n

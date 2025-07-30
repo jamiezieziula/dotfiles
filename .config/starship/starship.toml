@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$direnv$custom$fill
 $character
 """
 
@@ -7,6 +7,18 @@ $character
 disabled = true
 symbol = '-'
 style = 'gray'
+
+[direnv]
+disabled = false
+format = " [$symbol$loaded]($style) "
+loaded_msg = "loaded"
+
+[jobs]
+disabled = false
+number_threshold = 1
+symbol = '&'
+style = 'yellow'
+format = ' [$symbol$number]($style) '
 
 [line_break]
 disabled = false
@@ -80,3 +92,8 @@ style = "green"
 
 [git_state]
 format = '\([$state($progress_current/$progress_total)]($style)\)'
+
+[custom.containers]
+command = 'docker ps -aq | wc -l'
+when = ''' test $(docker ps -aq | wc -l) -ne 0 '''
+format = ' 🐳 [$output]($style)'

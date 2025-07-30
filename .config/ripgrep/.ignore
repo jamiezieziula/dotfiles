@@ -1,0 +1,8 @@
+# should be equivalent to list in fzf.lua
+.git/*
+.venv/*
+.terraform/*
+.zsh_sessions/*
+.zcompcache/*
+.zcompdump
+node_modules/*

@@ -4,17 +4,9 @@ function symlink() {
   # zprofile
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
-  # Tmux's config (https://github.com/tmux/tmux/issues/142)
-  [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
-  ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
-
-  # mise config
-  [ -f ~/.mise.toml ] && rm ~/.mise.toml
-  ln -s ~/dotfiles/.mise.toml ~/.mise.toml
-
   # ssh
-  [ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date '+%Y-%m-%d-%H:%M:%S')
-  ln -s ~/dotfiles/.ssh/config ~/.ssh/config
+  mkdir -p "$HOME/.ssh"
+  ln -sf "$HOME/dotfiles/.config/ssh/config" "$HOME/.ssh/config"
   chmod 644 ~/.ssh/config
 
   # dotfiles
@@ -27,9 +19,12 @@ function symlink() {
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
+  # Claude Code
+  ln -sf "$HOME/dotfiles/.config/claude" "$HOME/.claude"
+
   # VSCode (VSCodium) configs
-  ln -s ~/dotfiles/.config/vscodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
-  ln -s ~/dotfiles/.config/vscodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/keybindings.json
+  ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
+  ln -sf "$HOME/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application Support/VSCodium/User/keybindings.json"
 }
 
 function dependencies() {
@@ -40,16 +35,6 @@ function dependencies() {
 
   # Install packages
   brew bundle install --file=.config/brew/Brewfile
-
-  ## TMUX's TPM
-  if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
-
-  # FZF
-  if [ ! -d '~/.fzf' ]; then (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install); fi
-
-  # neovim
-  mkdir -p "$HOME/go"
-  GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 }
 
 
@@ -59,7 +44,8 @@ function macos_settings() {
   # Show hidden app icons as transparent in the dock
   defaults write com.apple.Dock showhidden -bool TRUE
   # Faster Dock animation
-  defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -int 0
   # Use thin strokes (https://github.com/alacritty/alacritty/releases/tag/v0.11.0)
   defaults write -g AppleFontSmoothing -int 0
   # Adjust key repeat
@@ -77,7 +63,6 @@ function all() {
   dependencies
   symlink
   macos_settings
-  setup_git
 }
 
 TARGET=${@:-all}
