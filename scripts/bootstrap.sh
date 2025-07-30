@@ -21,7 +21,7 @@ function symlink() {
   mkdir -p "$HOME/.config"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
   rm "$HOME/.zshrc" || true
-  ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+  ln -s "$HOME/dotfiles/.config/zsh/.zshrc" "$HOME/.zshrc"
 
   # binaries
   mkdir -p "$HOME/bin"

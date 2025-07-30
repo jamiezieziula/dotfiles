@@ -1,15 +1,17 @@
 # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 
 [user]
-	name = Mitchell Nielsen
-	email = inbox@mitchn.me
+	name = Jamie Zieziula
+	email = jamiezieziula@gmail.com
 [core]
   pager = delta
+  excludesfile = ~/.config/git/ignore
 [pull]
 	rebase = false # don't automatically rebase on `git pull`
 [fetch]
 	prune = true # delete branches that no longer exist upstream (merged)
 [push]
+  default = simple
   autosetupremote = true # automatically set up the remote origin when pushing
 [rebase]
 	autosquash = true # automatically squash fixup/squash commits
