@@ -210,17 +210,6 @@ alias cleaf='clear'
 alias claew='clear'
 alias clea='clear'
 alias clae='clear'
-# prefect api keys
-alias prdauth='export PREFECT_API_KEY="pnu_xOOEOtJYgIIjFUyX1VxHQmduobTf2e4yzfp8"'
-alias stgauth='export PREFECT_API_KEY="pnu_IntjBgjsUTza7WArRJS06PDEnZovv53VRess"'
-alias devauth='export PREFECT_API_KEY="pnu_V7CprECVEGibjSvvVA4Z87HM3nTvC3265jcJ"'
-# cloudsql proxy commands
-alias cspnd='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-dev-cloud2:us-east1:nebula-dev?port=3432"'
-alias cspod='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-dev-cloud2:us-east1:orion-dev?port=4432"'
-alias cspns='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-stg-cloud2:us-east1:nebula-stg?port=5432"'
-alias cspos='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-stg-cloud2:us-east1:orion-stg?port=6432"'
-alias cspnp='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-prd-cloud2:us-east1:nebula-prd?port=7432"'
-alias cspop='cloud-sql-proxy --auto-iam-authn --private-ip "prefect-prd-cloud2:us-east1:orion-prd?port=8432"'
 
 alias kvs='kubectl get virtualservices.networking.istio.io'
 
