@@ -20,3 +20,6 @@
 
 # Karabiner Elements
 .config/karabiner/automatic_backups
+
+# Private Files
+.config/zsh/private.zsh
