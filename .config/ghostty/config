@@ -5,7 +5,6 @@ theme = NordFox
 
 # Font settings
 font-size = 12
-font-family = "JetBrainsMonoNL Nerd Font"
 adjust-cell-height = "20%"
 
 # Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
