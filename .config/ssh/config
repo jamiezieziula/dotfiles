@@ -1,3 +1,3 @@
 Host *
-    IdentityFile "~/.ssh/id_ed25519"
+    IdentityFile "~/.ssh/github"
     IdentitiesOnly yes
