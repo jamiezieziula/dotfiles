@@ -1,5 +1,5 @@
 format = """
-$kubernetes$directory$git_branch$git_status$git_state$custom
+$kubernetes$directory$git_branch$git_status$custom
 $character
 """
 
@@ -83,7 +83,7 @@ style = "green"
 ignore_branches = []
 
 [git_state]
-format = '\([$state($progress_current/$progress_total)]($style)\)'
+disabled = true
 
 [custom.containers]
 command = 'docker ps -aq | wc -l'
