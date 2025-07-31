@@ -24,7 +24,6 @@
 
 # private
 .config/zsh/private.zsh
-link.notes
 
 # gcloud
 .config/gcloud/

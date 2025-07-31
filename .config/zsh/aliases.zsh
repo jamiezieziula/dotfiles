@@ -17,6 +17,9 @@ alias gprune="git remote prune origin"
 
 # flux
 
+# ghostty
+alias ghy="ghostty"
+
 # kubectl
 alias deploy="kubectl get deployments"
 alias kust="kubectl get kustomizations -A"
@@ -38,6 +41,9 @@ alias watcher="watch -n1 kubectl get kustomizations -n flux-system"
 # precommit
 alias pca="pre-commit run --all-files"
 alias pci="pre-commit install"
+
+# stow
+alias stowconfig='cd $HOME/dotfiles && stow -v --target=$HOME/.config .config'
 
 # terraform
 alias tfaaa="terraform apply --auto-approve"
