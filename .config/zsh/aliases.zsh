@@ -53,6 +53,7 @@ alias tff="terraform fmt --recursive"
 alias t='tree -C -a -I .git'
 
 # random
+alias code="cursor"
 alias codez="cursor ~/.zshrc"
 alias cdd='cd $(find ~/src -maxdepth 4 -type d | sort -u | fzf)'
 alias randompw='openssl rand -base64 18'
