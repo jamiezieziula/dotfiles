@@ -62,7 +62,7 @@ function macos_settings() {
 function all() {
   dependencies
   symlink
-  macos_settings
+  # macos_settings
 }
 
 TARGET=${@:-all}

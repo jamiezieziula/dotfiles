@@ -64,7 +64,7 @@ function patch_gitrepo() {
 
 # ===================
 # Kubernetes
-# ===================
+# ==================
 # add new cluster credentials into their own context file
 function knew() {
     if [ $# -ne 4 ]; then
