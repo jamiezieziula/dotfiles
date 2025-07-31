@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$direnv$custom$fill
+$directory$git_branch$git_status$git_state$kubernetes$custom
 $character
 """
 
@@ -9,19 +9,13 @@ symbol = '-'
 style = 'gray'
 
 [direnv]
-disabled = false
-format = " [$symbol$loaded]($style) "
-loaded_msg = "loaded"
+disabled = true
 
 [jobs]
-disabled = false
-number_threshold = 1
-symbol = '&'
-style = 'yellow'
-format = ' [$symbol$number]($style) '
+disabled = true
 
 [line_break]
-disabled = false
+disabled = true
 
 [package]
 disabled = true
@@ -45,11 +39,7 @@ disabled = true
 disabled = true
 
 [python]
-disabled = false
-python_binary = 'python3'
-pyenv_version_name = true
-symbol = ''
-format = '[(${version} )(\($virtualenv\) )]($style)'
+disabled = true
 
 [nodejs]
 disabled = true
@@ -61,34 +51,34 @@ disabled = true
 disabled = false
 format = 'in [☸ $context:$namespace](blue) '
 
-[terraform]
-disabled = false
-format = '[tf:$workspace]($style) '
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "$cluster"
 
-# # -----
-# # https://starship.rs/presets/pure-preset.html
-# # -----
+[terraform]
+disabled = true
+
 [character]
 success_symbol = '[\$](green)'
 error_symbol = '[\$](red)'
 
 [directory]
-truncation_length = 8
+truncation_length = 2
 truncate_to_repo = false
-style = "blue"
+style = "bright-purple"
 
 [git_status]
 ahead = "⇡${count}"
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind)]($style) "
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 style = "cyan"
-stashed = "≡"
 
 [git_branch]
-symbol = " "
+symbol = "λ "
 format = "on [$symbol$branch]($style) "
 style = "green"
+ignore_branches = []
 
 [git_state]
 format = '\([$state($progress_current/$progress_total)]($style)\)'

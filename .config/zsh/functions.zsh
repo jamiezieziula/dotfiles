@@ -117,13 +117,11 @@ function kdelete() {
 function kon() {
   context=$(ls $HOME/.kube/contexts | fzf)
   export KUBECONFIG=$HOME/.kube/contexts/$context
-  PS1="$KUBE_PS1"
 }
 
 # disconnect from the cluster
 function koff() {
   unset KUBECONFIG
-  PS1="$DEFAULT_PS1"
 }
 
 # ===================
