@@ -54,6 +54,6 @@ alias t='tree -C -a -I .git'
 
 # random
 alias code="cursor"
-alias codez="cursor ~/.zshrc"
+alias codez="cursor ~/dotfiles/.config/zsh"
 alias cdd='cd $(find ~/src -maxdepth 4 -type d | sort -u | fzf)'
 alias randompw='openssl rand -base64 18'
