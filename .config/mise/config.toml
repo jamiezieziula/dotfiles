@@ -7,6 +7,7 @@ helm = "latest"
 istioctl = "latest"
 terraform = "1.10.5"
 updatecli = "latest"
+kubectl = "1.31.1"
 
 stylua = "latest"
 
