@@ -50,14 +50,15 @@ function flux_toggle() {
 
 # update the branch of a gitrepository
 function patch_gitrepo() {
-    if [ $# -ne 2 ]; then
-        echo "Usage: patch_gitrepo <gitrepository_name> <branch_name>"
+    if [ $# -eq 0 ]; then
+        echo "Usage: patch_gitrepo <gitrepository_name> [branch_name]"
         echo "Example: patch_gitrepo my-repo feature-branch"
+        echo "Note: branch_name defaults to 'main' if not specified"
         return 1
     fi
     
     local repo_name="$1"
-    local branch_name="$2"
+    local branch_name="${2:-main}"
     
     kubectl patch gitrepository "$repo_name" -n flux-system --type='merge' -p "{\"spec\":{\"ref\":{\"branch\":\"$branch_name\"}}}"
 }

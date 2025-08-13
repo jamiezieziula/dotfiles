@@ -42,6 +42,10 @@ alias watcher="watch -n1 kubectl get kustomizations -n flux-system"
 alias pca="pre-commit run --all-files"
 alias pci="pre-commit install"
 
+# python
+alias venv="uv venv .venv"
+alias activate="source .venv/bin/activate"
+
 # stow
 alias stowconfig='cd $HOME/dotfiles && stow -v --target=$HOME/.config .config'
 

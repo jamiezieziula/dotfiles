@@ -49,8 +49,12 @@ if command -v fzf &> /dev/null; then
   source <(fzf --zsh)
 fi
 
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+fi
+
 # required to autocomplete for gcp related tools like `bq` and `gutils`
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+# source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
 # For managing tool versions
 eval "$(mise activate zsh)"
