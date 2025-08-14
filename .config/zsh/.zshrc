@@ -14,9 +14,7 @@ plugins=(docker git gh kubectl terraform encode64 history)
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/dotfiles/.config/zsh/aliases.zsh
-source ~/dotfiles/.config/zsh/functions.zsh
-source ~/dotfiles/.config/zsh/private.zsh
+
 
 # ===================
 # PS1
@@ -28,18 +26,19 @@ function get_cluster_short() {
 # ===================
 # Environment variables
 # ===================
+# Claude
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-
-# Golang
-#export GOPATH=$HOME/go
-# export PATH=$PATH:$GOPATH/bin
 
 
 # ===================
 # Sources
 # ===================
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/functions.zsh"
+source "$HOME/.config/zsh/private.zsh"
 
 if command -v flux &> /dev/null; then
     source <(flux completion zsh)
@@ -59,10 +58,13 @@ if command -v stern &> /dev/null; then
   source <(stern --completion zsh)
 fi
 
-# GCloud completion
+# GCloud completion and configuration
 if [[ -f "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc" ]]; then
   source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc"
 fi
+
+# Enable GKE auth plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # For managing tool versions
 eval "$(mise activate zsh)"
