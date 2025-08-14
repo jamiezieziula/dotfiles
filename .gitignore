@@ -30,3 +30,9 @@
 
 # tmux
 .config/tmux/plugins/
+
+# claude
+.config/claude/projects/
+.config/claude/todos/
+.config/claude/.claude.json
+.config/claude/.claude.json.backup
