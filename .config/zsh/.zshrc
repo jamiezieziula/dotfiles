@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 HYPHEN_INSENSITIVE="true"
 
-plugins=(docker gcloud git gh kubectl terraform encode64 history)
+plugins=(docker git gh kubectl terraform encode64 history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,12 +49,20 @@ if command -v fzf &> /dev/null; then
   source <(fzf --zsh)
 fi
 
+# kubectl completion (oh-my-zsh plugin may not be enough)
 if command -v kubectl &> /dev/null; then
   source <(kubectl completion zsh)
 fi
 
-# required to autocomplete for gcp related tools like `bq` and `gutils`
-# source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+# stern completion for Kubernetes log viewing
+if command -v stern &> /dev/null; then
+  source <(stern --completion zsh)
+fi
+
+# GCloud completion
+if [[ -f "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc" ]]; then
+  source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 # For managing tool versions
 eval "$(mise activate zsh)"
