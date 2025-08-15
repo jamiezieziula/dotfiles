@@ -1,3 +1,6 @@
+# brew
+alias brewdump="brew bundle dump --force --file=~/dotfiles/.config/brew/Brewfile"
+
 # gcp
 alias gc="gcloud"
 alias gset="gcloud config set project"
