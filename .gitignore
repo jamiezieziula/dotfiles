@@ -34,5 +34,6 @@
 # claude
 .config/claude/projects/
 .config/claude/todos/
+.config/claude/shell-snapshots/
 .config/claude/.claude.json
 .config/claude/.claude.json.backup

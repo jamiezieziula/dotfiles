@@ -58,7 +58,7 @@ if command -v stern &> /dev/null; then
   source <(stern --completion zsh)
 fi
 
-# GCloud completion and configuration
+# GCloud completion
 if [[ -f "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc" ]]; then
   source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc"
 fi
