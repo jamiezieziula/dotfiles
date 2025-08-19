@@ -2,6 +2,13 @@
 
 - Use `rg` for searching files and their contents.
 - Use `gh` for interacting with GitHub.
+- For Terraform files:
+   - use 2-space indentation, group resources logically, and always run `terraform fmt` before committing.
+   - No new lines between outputs & variables within their respective blocks.
+   - Only add new lines between resources where logically necessary for readability.
+   - Default to separating logical resources into their own namesake files (e.g., `vpc.tf`, `security_groups.tf`).
+   - Use `data.tf` for storing locals and other data objects that are accessed across multiple files in a directory.
+   - Make things alphabetical where possible (resources, variables, outputs, etc.).
 
 ## General guidelines
 
