@@ -135,7 +135,7 @@ function mcd() {
 }
 
 # Function to decode base64-encoded values
-function decode { echo ${1} | base64 --decode - }
+function decode { echo ${1} | base64 --decode }
 
 # Run a release script in a git repository
 function release() {

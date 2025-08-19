@@ -1,6 +1,9 @@
 # brew
 alias brewdump="brew bundle dump --force --file=~/dotfiles/.config/brew/Brewfile"
 
+# cat
+alias catz="cat ~/.zshrc ~/.config/zsh/aliases.zsh ~/.config/zsh/functions.zsh ~/.config/zsh/private.zsh 2>/dev/null"
+
 # gcp
 alias gc="gcloud"
 alias gset="gcloud config set project"
@@ -62,5 +65,6 @@ alias t='tree -C -a -I .git'
 # random
 alias code="cursor"
 alias codez="cursor ~/dotfiles/.config/zsh"
-alias cdd='cd $(find ~/src -maxdepth 4 -type d | sort -u | fzf)'
+alias coded="cursor ~/dotfiles"
+alias cdd='cd $(find ~/src -maxdepth 8 -type d | sort -u | fzf)'
 alias randompw='openssl rand -base64 18'
