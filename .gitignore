@@ -33,6 +33,7 @@
 
 # claude
 .config/claude/projects/
+.config/claude/plugins/
 .config/claude/todos/
 .config/claude/shell-snapshots/
 .config/claude/statsig/

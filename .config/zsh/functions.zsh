@@ -53,7 +53,6 @@ function patch_gitrepo() {
     if [ $# -eq 0 ]; then
         echo "Usage: patch_gitrepo <gitrepository_name> [branch_name]"
         echo "Example: patch_gitrepo my-repo feature-branch"
-        echo "Note: branch_name defaults to 'main' if not specified"
         return 1
     fi
     

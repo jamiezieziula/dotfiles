@@ -65,6 +65,7 @@ fi
 
 # Enable GKE auth plugin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export PATH="$PATH:/opt/homebrew/share/google-cloud-sdk/bin"
 
 # For managing tool versions
 eval "$(mise activate zsh)"
