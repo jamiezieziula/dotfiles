@@ -2,13 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "mcp__linear__get_issue",
-      "Bash(git pull:*)",
-      "Bash(git worktree:*)",
-      "Bash(git checkout:*)",
-      "Bash(gh pr view:*)",
-      "Bash(*)",
-      "Bash(find:*)",
+      "Bash",
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
@@ -17,16 +11,42 @@
       "Read(*)",
       "Task(*)",
       "TodoWrite(*)",
-      "WebFetch(*)",
-      "WebSearch(*)",
+      "WebFetch",
+      "WebSearch",
       "Write(*)",
-      "mcp__linear__list_my_issues"
+      "mcp__mcp-router",
+      "mcp__linear",
+      "mcp__pagerduty",
+      "mcp__prefect-docs",
+      "mcp__prometheus-prd",
+      "mcp__prometheus-dev",
+      "mcp__prometheus-stg",
+      "mcp__grafana",
+      "mcp__terraform"
     ],
-    "deny": [
-      "Bash(rm:*),"
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git push:*)"
     ]
   },
+  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
+  "enabledPlugins": {
+    "prefect@prefect": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "prefect-internal-skills@prefecthq-internal-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "prefecthq-internal-skills": {
+      "source": {
+        "source": "github",
+        "repo": "prefecthq/internal-skills"
+      }
+    }
+  },
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
   }

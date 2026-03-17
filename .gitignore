@@ -32,10 +32,20 @@
 .config/tmux/plugins/
 
 # claude
+.config/claude/backups/
+.config/claude/file-history/
+.config/claude/cache/
+.config/claude/debug/
+.config/claude/paste-cache/
+.config/claude/tasks/
+.config/claude/telemetry/
 .config/claude/projects/
 .config/claude/plugins/
 .config/claude/todos/
 .config/claude/shell-snapshots/
 .config/claude/statsig/
+.config/claude/history.jsonl
+.config/claude/policy-limits.json
+.config/claude/stats-cache.json
 .config/claude/.claude.json
 .config/claude/.claude.json.backup

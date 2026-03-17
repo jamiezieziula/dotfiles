@@ -1,0 +1,43 @@
+{
+    "mcpServers": {
+      "grafana": {
+        "type": "sse",
+        "url": "http://localhost:8100/sse"
+      },
+      "prometheus-prd": {
+        "type": "http",
+        "url": "http://localhost:8101/mcp"
+      },
+      "prometheus-dev": {
+        "type": "http",
+        "url": "http://localhost:8103/mcp"
+      },
+      "prometheus-stg": {
+        "type": "http",
+        "url": "http://localhost:8104/mcp"
+      },
+      "terraform": {
+        "type": "http",
+        "url": "http://localhost:8102/mcp"
+      },
+      "linear": {
+        "type": "http",
+        "url": "https://mcp.linear.app/mcp"
+      },
+      "notion": {
+        "type": "http",
+        "url": "https://mcp.notion.com/mcp"
+      },
+      "datadog": {
+        "type": "http",
+        "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+      },
+      "pagerduty": {
+        "type": "http",
+        "url": "https://mcp.pagerduty.com/mcp",
+        "headers": {
+          "Authorization": "Token ${PAGERDUTY_TOKEN}"
+        }
+      }
+    }
+  }
