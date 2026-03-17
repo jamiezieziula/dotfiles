@@ -1,5 +1,5 @@
 format = """
-$kubernetes$python$directory$git_branch$git_status$custom
+$kubernetes$python$directory$git_branch$git_status
 $character
 """
 
@@ -88,8 +88,3 @@ ignore_branches = []
 
 [git_state]
 disabled = true
-
-[custom.containers]
-command = 'docker ps -aq | wc -l'
-when = ''' test $(docker ps -aq | wc -l) -ne 0 '''
-format = ' 🐳 [$output]($style)'

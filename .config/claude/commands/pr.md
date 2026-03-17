@@ -7,9 +7,17 @@ First, make sure all of the current files are committed. If `pre-commit` hooks
 fail, just re-add the files that failed and commit them again. NEVER EVER
 `amend` a commit under any circumstances.
 
-Then, finally use `gh pr create` to create the PR If there is only a single
+Then, use `gh pr create --draft` to create the PR in draft state (unless the user
+explicitly specifies to create it as ready for review). If there is only a single
 commit, use the commit message as the PR message. If there are multiple commits,
 synthesize a new one that covers all of those changes.
+
+CRITICAL: After creating or updating the PR with new commits, ALWAYS validate that
+the PR title and body accurately represent ALL changes on the branch:
+1. Review the full diff from base branch to current branch HEAD
+2. Compare the PR title and body against the actual changes
+3. If the PR description is outdated or incomplete, update it using `gh pr edit`
+4. Ensure all significant changes are reflected in the description
 
 ## Commit/PR descriptions
 

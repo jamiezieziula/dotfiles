@@ -4,6 +4,9 @@ alias brewdump="brew bundle dump --force --file=~/dotfiles/.config/brew/Brewfile
 # cat
 alias catz="cat ~/.zshrc ~/.config/zsh/aliases.zsh ~/.config/zsh/functions.zsh ~/.config/zsh/private.zsh 2>/dev/null"
 
+# claude
+alias claude='claude --mcp-config ~/.config/claude/mcp.json'
+
 # gcp
 alias gc="gcloud"
 alias gset="gcloud config set project"

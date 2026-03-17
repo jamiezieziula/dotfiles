@@ -3,6 +3,7 @@
 # ===================
 # Adds a git worktree using the project and branch name
 function gwa() {
+    git pull origin main
     local branch_name="${1}"
     local branch_name_escaped="$(echo $branch_name | sed 's;\/;-;g')"
     local location="../${branch_name_escaped}"
@@ -14,6 +15,7 @@ function gwa() {
     fi
     git worktree add ${location} ${args} ${branch_name}
     cd "${location}"
+    pre-commit install
 }
 
 # git worktree remove: changes back to the
@@ -56,10 +58,31 @@ function patch_gitrepo() {
         return 1
     fi
     
-    local repo_name="$1"
+    local repo_name="${1:-cluster-deployment}"
     local branch_name="${2:-main}"
     
     kubectl patch gitrepository "$repo_name" -n flux-system --type='merge' -p "{\"spec\":{\"ref\":{\"branch\":\"$branch_name\"}}}"
+}
+
+function reconcile_flux() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: reconcile_flux <type> <name>"
+        echo "Example: reconcile_flux g cluster-deployment"
+        echo "Example: reconcile_flux k cluster-deployment"
+        return 1
+    fi
+
+    local type="$1"
+    local name="${2:-cluster-deployment}"
+
+    if [ "$type" = "g" ]; then
+        flux reconcile source git $name
+    elif [ "$type" = "k" ]; then
+        flux reconcile kustomization $name
+    else
+        echo "Invalid type: $type"
+        return 1
+    fi
 }
 
 # ===================

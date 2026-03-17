@@ -29,9 +29,15 @@ function get_cluster_short() {
 # Claude
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
+# Keybase
+export PATH="/Applications/Keybase.app/Contents/SharedSupport/bin:$PATH"
+
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
+export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
+export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)"
 
 # ===================
 # Sources
@@ -65,10 +71,13 @@ fi
 
 # Enable GKE auth plugin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-export PATH="$PATH:/opt/homebrew/share/google-cloud-sdk/bin"
+export PATH="$HOME/.local/bin:$PATH:/opt/homebrew/share/google-cloud-sdk/bin"
 
 # For managing tool versions
 eval "$(mise activate zsh)"
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
+
+eval $(thefuck --alias)
+export PATH="/Applications/Keybase.app/Contents/SharedSupport/bin:$PATH"
