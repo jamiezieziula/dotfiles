@@ -38,6 +38,18 @@
         "headers": {
           "Authorization": "Token ${PAGERDUTY_TOKEN}"
         }
+      },
+      "prefect-dev": {
+        "type": "http",
+        "url": "http://localhost:8105/mcp/"
+      },
+      "prefect-stg": {
+        "type": "http",
+        "url": "http://localhost:8106/mcp/"
+      },
+      "prefect-prd": {
+        "type": "http",
+        "url": "http://localhost:8107/mcp/"
       }
     }
   }

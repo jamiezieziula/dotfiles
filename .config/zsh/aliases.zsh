@@ -51,6 +51,11 @@ alias watcher="watch -n1 kubectl get kustomizations -n flux-system"
 alias pca="pre-commit run --all-files"
 alias pci="pre-commit install"
 
+# prefect
+alias prdauth='export PREFECT_API_KEY="${PREFECT_API_KEY_PRD}"'
+alias stgauth='export PREFECT_API_KEY="${PREFECT_API_KEY_STG}"'
+alias devauth='export PREFECT_API_KEY="${PREFECT_API_KEY_DEV}"'
+
 # python
 alias venv="uv venv .venv"
 alias activate="source .venv/bin/activate"

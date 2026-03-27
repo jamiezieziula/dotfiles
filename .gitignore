@@ -24,6 +24,7 @@
 
 # private
 .config/zsh/private.zsh
+.env
 
 # gcloud
 .config/gcloud/

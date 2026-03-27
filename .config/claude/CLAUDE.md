@@ -12,6 +12,7 @@
 - Never use `--no-verify` to bypass commit hooks; fix the errors
 - Never amend or squash commits unless explicitly told
 - Never make assumptions; verify with existing code
+- Never revert or overwrite uncommitted local changes. If there is a conflict between your changes and local uncommitted modifications, stop and ask for guidance.
 
 ## Specific guidelines
 

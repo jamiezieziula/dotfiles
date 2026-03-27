@@ -15,7 +15,7 @@ Use these defaults unless the user explicitly specifies otherwise:
 - **Team**: Platform (ID: `0cf54a8c-b85d-4637-b6fd-89670b625782`)
 - **Assignee**: Jamie Zieziula (me) (ID: `4b467fca-5132-49ea-ba89-1c4a642604cc`)
 - **Priority**: 3 (Medium)
-- **State**: Todo (ID: `04053aff-bb8b-429a-b204-87e16d821853`)
+- **State**: Triage
 - **Project**: Platform Regular Maintenance: 2026Q1 (ID: `fddaf0c1-ecfc-4c88-917a-196f8ab38750`)
 
 ## Instructions

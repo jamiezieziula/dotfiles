@@ -35,10 +35,16 @@ export PATH="/Applications/Keybase.app/Contents/SharedSupport/bin:$PATH"
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+# MCP tokens
 export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
-export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
-export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)"
+export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)" 
+export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)" # for linear mcp in Claude
+export TFE_TOKEN="$(cat ${HOME}/secret/tfc-token.txt)" # for terraform mcp in Claude
 
+# Prefect API keys
+export PREFECT_API_KEY_DEV="$(cat ${HOME}/secret/prefect-dev-api-key.txt)"
+export PREFECT_API_KEY_STG="$(cat ${HOME}/secret/prefect-stg-api-key.txt)"
+export PREFECT_API_KEY_PRD="$(cat ${HOME}/secret/prefect-prd-api-key.txt)"
 # ===================
 # Sources
 # ===================

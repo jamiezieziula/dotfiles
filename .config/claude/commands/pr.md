@@ -22,13 +22,18 @@ the PR title and body accurately represent ALL changes on the branch:
 ## Commit/PR descriptions
 
 - IMPORTANT: THIS STYLE GUIDE IS REQUIRED AND MANDATORY
-- Be conversational and humble, avoid "comprehensive" or confident
-  "root cause" claims, it highlights your Dunning-Kruger issues
-- Brief, focus on what/why not how
+- Be concise. Brief, focus on what/why not how
 - No checklists or file lists (but change lists OK)
-- No "Test Plan" checklist
-- Always mention related issues when available
-  - Based on our conversation, use "Closes #1234" or "Closes ENG-1234"
-  - If I didn't mention a specific issue - look up the PLA issue attached to the current cycle that contains the following 🧺 Cycle Catch All
+- Always relate to a Linear issue. Based on our conversation, use "Closes #1234"
+  or "Closes PLA-1234". If you cannot find a related Linear issue, ask before
+  creating the PR.
 - Include contextual links (logs, issues, PRs, materials) that would help a
   reviewer get oriented on what we're talking about
+
+## Test plan
+
+- Always include a test plan section in the PR body
+- Test plans must include exact ways to validate the changes: specific commands
+  to run, expected outputs, and things to watch for
+- Never leave test steps vague. If it involves kubectl, curl, or other CLI tools,
+  include the full commands
